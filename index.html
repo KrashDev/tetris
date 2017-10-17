@@ -1,30 +1,36 @@
 <html>
-    <head>
-        <title>Tetris</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Abel|Encode+Sans+Expanded|Play|Quicksand" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-                    <div class="video-container">
-                        <div class="filter"></div>
-                        <video autoplay loop class="fillWidth">
-                            <source src="Long_shot.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-                            <source src="Long_shot.mp4" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-                        </video>
-                        <!-- <div class="poster hidden">
-                            <img src="Long_shot.jpg" alt="">
-                        </div> -->
-                    </div>
-        <div id="title">tetris</div>
-        <div id="instructions">
-            Instructions
-            <hr>
-            <p>I mean it's Tetris...</p><p>Use Q and W to rotate the pieces</p><p>If you lose your score will be reduced to 0 and a new game will begin</p></div>
-        <div id="score"></div>
-        <canvas id="tetris" width="240" height="400" />
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="app.js"></script>
 
-    </body>
-    </html>
+<head>
+    <title>Tetris</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Encode+Sans+Expanded|Play|Quicksand" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay loop class="fillWidth">
+        <source src="Long_shot.mp4" type="video/mp4" />                   
+        </video>
+    </div>
+
+    <div id="title">tetris</div>
+    <div id="theScore">score</div>
+    <!-- <div id="score"></div> -->
+    <div id="instructions">
+        Instructions
+    </div>
+    <div id="moreInstructions">
+        <p>I mean it's Tetris...</p>
+        <p>Use Q and W to rotate the pieces</p>
+        <p>If you lose your score will be reduced to 0 and a new game will begin</p>
+    </div>
+
+    <canvas id="tetris" width="240" height="400" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>

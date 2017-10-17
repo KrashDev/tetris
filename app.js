@@ -1,66 +1,66 @@
 //jQuery is required to run this code
-$( document ).ready(function() {
-    
+$(document).ready(function() {
+
+    scaleVideoContainer();
+
+    initBannerVideoSize('.video-container .poster img');
+    initBannerVideoSize('.video-container .filter');
+    initBannerVideoSize('.video-container video');
+
+    $(window).on('resize', function() {
         scaleVideoContainer();
-    
-        initBannerVideoSize('.video-container .poster img');
-        initBannerVideoSize('.video-container .filter');
-        initBannerVideoSize('.video-container video');
-    
-        $(window).on('resize', function() {
-            scaleVideoContainer();
-            scaleBannerVideoSize('.video-container .poster img');
-            scaleBannerVideoSize('.video-container .filter');
-            scaleBannerVideoSize('.video-container video');
-        });
-    
+        scaleBannerVideoSize('.video-container .poster img');
+        scaleBannerVideoSize('.video-container .filter');
+        scaleBannerVideoSize('.video-container video');
     });
-    
-    function scaleVideoContainer() {
-    
-        var height = $(window).height() + 5;
-        var unitHeight = parseInt(height) + 'px';
-        $('.homepage-hero-module').css('height',unitHeight);
-    
-    }
-    
-    function initBannerVideoSize(element){
-    
-        $(element).each(function(){
-            $(this).data('height', $(this).height());
-            $(this).data('width', $(this).width());
-        });
-    
-        scaleBannerVideoSize(element);
-    
-    }
-    
-    function scaleBannerVideoSize(element){
-    
-        var windowWidth = $(window).width(),
+
+});
+
+function scaleVideoContainer() {
+
+    var height = $(window).height() + 5;
+    var unitHeight = parseInt(height) + 'px';
+    $('.homepage-hero-module').css('height', unitHeight);
+
+}
+
+function initBannerVideoSize(element) {
+
+    $(element).each(function() {
+        $(this).data('height', $(this).height());
+        $(this).data('width', $(this).width());
+    });
+
+    scaleBannerVideoSize(element);
+
+}
+
+function scaleBannerVideoSize(element) {
+
+    var windowWidth = $(window).width(),
         windowHeight = $(window).height() + 5,
         videoWidth,
         videoHeight;
-    
-        // console.log(windowHeight);
-    
-        $(element).each(function(){
-            var videoAspectRatio = $(this).data('height')/$(this).data('width');
-    
-            $(this).width(windowWidth);
-    
-            if(windowWidth < 1000){
-                videoHeight = windowHeight;
-                videoWidth = videoHeight / videoAspectRatio;
-                $(this).css({'margin-top' : 0, 'margin-left' : -(videoWidth - windowWidth) / 2 + 'px'});
-    
-                $(this).width(videoWidth).height(videoHeight);
-            }
-    
-            $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
-    
-        });
-    }
+
+    // console.log(windowHeight);
+
+    $(element).each(function() {
+        var videoAspectRatio = $(this).data('height') / $(this).data('width');
+
+        $(this).width(windowWidth);
+
+        if (windowWidth < 1000) {
+            videoHeight = windowHeight;
+            videoWidth = videoHeight / videoAspectRatio;
+            $(this).css({ 'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + 'px' });
+
+            $(this).width(videoWidth).height(videoHeight);
+        }
+
+        $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
+
+    });
+}
 
 // Tetris javascript starts here
 const canvas = document.getElementById('tetris');
@@ -71,7 +71,7 @@ context.scale(20, 20);
 // This function checks to see if there are any 0's in the row, if not it will clear the row
 function arenaSweep() {
     let rowCount = 1;
-    outer : for (let y = arena.length -1; y > 0; --y) {
+    outer: for (let y = arena.length - 1; y > 0; --y) {
         for (let x = 0; x < arena[y].length; ++x) {
             if (arena[y][x] === 0) {
                 continue outer;
@@ -88,12 +88,12 @@ function arenaSweep() {
 }
 
 function collide(arena, player) {
-    const [m,o] = [player.matrix, player.pos];
+    const [m, o] = [player.matrix, player.pos];
     for (let y = 0; y < m.length; ++y) {
-        for (let x=0; x < m[y].length; ++x) {
-            if (m[y][x] !== 0 && 
-            (arena[y + o.y] &&
-            arena[y+o.y][x+ o.x]) !==0) {
+        for (let x = 0; x < m[y].length; ++x) {
+            if (m[y][x] !== 0 &&
+                (arena[y + o.y] &&
+                    arena[y + o.y][x + o.x]) !== 0) {
                 return true;
             }
         }
@@ -116,44 +116,44 @@ function createPiece(type) {
             [0, 0, 0],
             [1, 1, 1],
             [0, 1, 0],
-        ];   
+        ];
     } else if (type === 'O') {
         return [
             [2, 2],
             [2, 2],
-        ]; 
+        ];
     } else if (type === 'L') {
         return [
             [0, 3, 0],
             [0, 3, 0],
             [0, 3, 3],
-        ];  
+        ];
 
     } else if (type === 'J') {
         return [
             [0, 4, 0],
             [0, 4, 0],
             [4, 4, 0],
-        ];  
+        ];
     } else if (type === 'I') {
         return [
             [0, 5, 0, 0],
             [0, 5, 0, 0],
             [0, 5, 0, 0],
             [0, 5, 0, 0],
-        ];  
+        ];
     } else if (type === 'S') {
         return [
             [0, 6, 6],
             [6, 6, 0],
             [0, 0, 0],
-        ];  
+        ];
     } else if (type === 'Z') {
         return [
             [7, 7, 0],
             [0, 7, 7],
             [0, 0, 0],
-        ];  
+        ];
     }
 }
 
@@ -162,26 +162,26 @@ function draw() {
     context.fillStyle = '#202028';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    drawMatrix(arena, {x:0, y:0});
+    drawMatrix(arena, { x: 0, y: 0 });
     drawMatrix(player.matrix, player.pos);
 }
 
 function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
-            if (value !==0) {
+            if (value !== 0) {
                 context.fillStyle = colors[value];
-                context.fillRect(x + offset.x, y + offset.y, 1,1);
+                context.fillRect(x + offset.x, y + offset.y, 1, 1);
             }
         });
     });
 }
 
 function merge(arena, player) {
-    player.matrix.forEach((row,y) => {
-        row.forEach((value,x) => {
-            if (value !==0) {
-                arena[y + player.pos.y][x+player.pos.x] = value;
+    player.matrix.forEach((row, y) => {
+        row.forEach((value, x) => {
+            if (value !== 0) {
+                arena[y + player.pos.y][x + player.pos.x] = value;
             }
         });
     });
@@ -210,7 +210,7 @@ function playerReset() {
     const pieces = 'ILJOTSZ';
     player.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
     player.pos.y = 0;
-    player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 |0);
+    player.pos.x = (arena[0].length / 2 | 0) - (player.matrix[0].length / 2 | 0);
     if (collide(arena, player)) {
         arena.forEach(row => row.fill(0));
         player.score = 0;
@@ -220,11 +220,11 @@ function playerReset() {
 
 function playerRotate(dir) {
     const pos = player.pos.x;
-    let offset =1;
+    let offset = 1;
     rotate(player.matrix, dir);
     while (collide(arena, player)) {
         player.pos.x += offset;
-        offset =-(offset + (offset > 0 ? 1: -1));
+        offset = -(offset + (offset > 0 ? 1 : -1));
         if (offset > player.matrix[0].length) {
             rotate(player.matrix, -dir);
             player.pos.x = pos;
@@ -234,12 +234,12 @@ function playerRotate(dir) {
 }
 
 function rotate(matrix, dir) {
-    for (let y=0; y < matrix.length; ++y) {
-        for (let x=0; x < y; ++x) {
+    for (let y = 0; y < matrix.length; ++y) {
+        for (let x = 0; x < y; ++x) {
             [
                 matrix[x][y],
                 matrix[y][x],
-            ] =[
+            ] = [
                 matrix[y][x],
                 matrix[x][y],
             ];
@@ -256,8 +256,9 @@ let dropCounter = 0;
 let dropInterval = 1000;
 
 let lastTime = 0;
+
 function update(time = 0) {
-    const deltaTime = time-lastTime;
+    const deltaTime = time - lastTime;
     lastTime = time;
 
     dropCounter += deltaTime;
@@ -271,26 +272,26 @@ function update(time = 0) {
 }
 
 function updateScore() {
-    document.getElementById('score').innerText = player.score;
+    document.getElementById('theScore').innerText = "Score: " + player.score;
 }
 
 // The colors for our blocks
 const colors = [
     null,
-    'red',
-    'blue',
-    'green',
-    'purple',
-    'orange',
-    'yellow',
-    'white'
+    '#33ccff',
+    '#9966ff',
+    '#66ff33',
+    '#666699',
+    '#ff66ff',
+    '#33ff99',
+    '#ff0066'
 ];
 
-const arena = createMatrix(12,20);
+const arena = createMatrix(12, 20);
 
 
 const player = {
-    pos: {x:0, y:0},
+    pos: { x: 0, y: 0 },
     matrix: null,
     score: 0,
 }
@@ -312,5 +313,5 @@ document.addEventListener('keydown', event => {
 });
 
 playerReset();
-updateScore();  
+updateScore();
 update();

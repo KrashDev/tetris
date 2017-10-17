@@ -1,54 +1,61 @@
-body {
-}
+body {}
 
 canvas {
-    position:absolute;
-    top:25%;
-    left:40%;
-    z-index:1;
-    border:solid 2px #ffffff;
-
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    z-index: 1;
+    border: solid 2px #ffffff;
 }
 
 #title {
-    position:absolute;
-    top:5%;
-    left:38%;
-    z-index:1;
+    border-bottom: 4px solid #ffffff;
+    position: absolute;
+    top: 5%;
+    left: 36%;
+    z-index: 1;
     font-family: 'Play', sans-serif;
     text-transform: uppercase;
-    font-size:85px;
+    font-size: 85px;
     text-align: center;
     color: #ffffff;
     letter-spacing: 5px;
 }
 
-#instructions {
-    position:absolute;
+#moreInstructions {
+    position: absolute;
     text-transform: uppercase;
-    font-size:25px;
-    top:10%;
-    left:65%;
-    z-index:1;
+    font-size: 25px;
+    top: 20%;
+    left: 65%;
+    z-index: 1;
     color: #ffffff;
 }
 
-/* #score {
-    position:relative;
-    top:0%;
-    left:50%;
-} */
+#instructions {
+    border-bottom: 2px solid #ffffff;
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 25px;
+    top: 15%;
+    left: 65%;
+    z-index: 1;
+    color: #ffffff;
+}
 
-.no-video .video-container video,
-.touch .video-container video {
-    display: none;
+#theScore {
+    border-bottom: 2px solid #ffffff;
+    z-index: 1;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 25px;
 }
-.no-video .video-container .poster,
-.touch .video-container .poster {
-    display: block !important;
-}
+
 .video-container {
-    z-index:1;
+    z-index: 1;
     position: relative;
     bottom: 0%;
     left: 0%;
@@ -57,22 +64,8 @@ canvas {
     overflow: hidden;
     background: #000;
 }
-.video-container .poster img {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-}
-.video-container .filter {
-    z-index: 100;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.4);
-    width: 100%;
-}
+
 .video-container video {
-    position: absolute;
+    /* position: absolute; */
     z-index: 0;
-    bottom: 0;
-}
-.video-container video.fillWidth {
-    width: 100%;
 }
